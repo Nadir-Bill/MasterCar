@@ -1,8 +1,10 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
+import com.android.volley.toolbox.StringRequest;
 import com.example.myapplication.requests.MasterCarService;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -36,9 +38,9 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "wow clicked", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
 
+
+                boolean loginTrue = false;
                 EditText login = findViewById(R.id.loginField);
                 EditText pwd    = findViewById(R.id.PasswordField);
 
@@ -46,6 +48,17 @@ public class LoginActivity extends AppCompatActivity {
 
                 MasterCarService mcService = new MasterCarService();
                 mcService.sendRequest(view.getContext(), MasterCarService.testUrl);
+                if (loginTrue) {
+                    Intent intent = new Intent(view.getContext(), Main2Activity.class);
+                    startActivity(intent);
+                } else {
+                    MasterCarService masterCarService = new MasterCarService();
+                    StringRequest res = masterCarService.sendTestRequest(view.getContext(), view);
+
+                    Snackbar.make(view, res.toString(), Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                }
+
             }
         });
 
