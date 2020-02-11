@@ -42,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
                 EditText login = findViewById(R.id.loginField);
                 EditText pwd    = findViewById(R.id.PasswordField);
 
-                // TODO execute login
+                // TODO execute login send request
 
                 MasterCarService mcService = new MasterCarService();
                 mcService.sendRequest(view.getContext(), MasterCarService.testUrl);
