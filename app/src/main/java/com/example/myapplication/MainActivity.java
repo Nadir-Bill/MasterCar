@@ -91,8 +91,6 @@ public class MainActivity extends AppCompatActivity {
         departList.add("Metz");
         departList.add("Lyon");
         departList.add("Reims");
-        departList.add("Annaba");
-        departList.add("Constantine");
         ArrayAdapter<String> arrayAdapterDep = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, departList);
         arrayAdapterDep.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         choixDepart.setAdapter(arrayAdapterDep);
